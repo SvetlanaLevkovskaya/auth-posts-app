@@ -1,13 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PostsComponent } from './components/posts/posts.component';
 import { PostsRoutingModule } from './posts-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { PostsTableComponent } from './components/posts-table/posts-table.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
-  declarations: [PostsComponent],
-  imports: [CommonModule, PostsRoutingModule, FormsModule, SharedModule],
+  declarations: [PostsTableComponent],
+  imports: [
+    CommonModule,
+    PostsRoutingModule,
+    FormsModule,
+    SharedModule,
+    MatInputModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+  ],
   providers: [],
 })
 export class PostsModule {}
