@@ -1,1 +1,19 @@
-<p>header works!</p>
+<header class="header">
+  <div class="logo">
+    <a
+      ><img
+        ngSrc="assets/logo-50.png"
+        alt="Logo"
+        height="50"
+        width="50"
+        routerLink="/posts"
+    /></a>
+  </div>
+
+  <div class="user-info">
+    <span *ngIf="userEmail">
+      Welcome, <strong>{{ userEmail }} </strong>!
+    </span>
+    <button *ngIf="userEmail" class="button" (click)="logout()">Logout</button>
+  </div>
+</header>
