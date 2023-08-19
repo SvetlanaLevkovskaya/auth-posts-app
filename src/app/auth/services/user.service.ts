@@ -16,10 +16,6 @@ export class UserService {
     private authService: SocialAuthService
   ) {}
 
-  setUser(user: SocialUser | null) {
-    this.user = user;
-  }
-
   getUser(): SocialUser | null {
     return this.user;
   }
