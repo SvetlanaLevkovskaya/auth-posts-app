@@ -8,7 +8,7 @@ import { SocialUser } from '@abacritt/angularx-social-login';
   styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent implements OnInit {
-  user: SocialUser | null =  {
+  user: SocialUser | null = {
     provider: '',
     id: '',
     email: '',
@@ -22,10 +22,9 @@ export class PostsComponent implements OnInit {
     response: '',
   };
 
-
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
-    this.user = this.userService.getUser()
+    this.user = this.userService.getUser();
   }
 }

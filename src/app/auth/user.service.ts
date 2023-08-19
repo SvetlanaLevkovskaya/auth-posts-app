@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { SocialUser } from '@abacritt/angularx-social-login';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   private user: SocialUser | null = null;

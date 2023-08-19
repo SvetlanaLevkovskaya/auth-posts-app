@@ -9,7 +9,7 @@ import { UserService } from '../../user.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  user: SocialUser =  {
+  user: SocialUser = {
     provider: '',
     id: '',
     email: '',
@@ -22,20 +22,23 @@ export class LoginComponent implements OnInit {
     authorizationCode: '',
     response: '',
   };
-  loggedIn: boolean = false;
+  loggedIn = false;
 
-
-  constructor(private authService: SocialAuthService, private router: Router, private userService: UserService) { }
+  constructor(
+    private authService: SocialAuthService,
+    private router: Router,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
-    this.authService.authState.subscribe((user) => {
+    this.authService.authState.subscribe(user => {
       this.user = user;
-      this.loggedIn = (user != null);
-      console.log(this.user)
+      this.loggedIn = user != null;
+      console.log(this.user);
 
       if (this.loggedIn) {
         this.userService.setUser(this.user);
-        this.router.navigate(['/posts']);
+        this.router.navigate(['/posts']).then(r => r);
       }
     });
   }
