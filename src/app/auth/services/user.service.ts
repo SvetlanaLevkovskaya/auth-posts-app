@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { SocialUser } from '@abacritt/angularx-social-login';
+import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Router } from '@angular/router';
 import { NotificationService } from '../../shared/services/notification.service';
+import { take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,8 @@ export class UserService {
 
   constructor(
     private notificationService: NotificationService,
-    private router: Router
+    private router: Router,
+    private authService: SocialAuthService
   ) {}
 
   setUser(user: SocialUser | null) {
@@ -32,7 +34,22 @@ export class UserService {
   setLoggedOut(): void {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('email');
-    this.handleSuccessLogout();
+
+    this.authService.authState.pipe(take(1)).subscribe(user => {
+      if (user) {
+        this.authService
+          .signOut()
+          .then(() => {
+            this.handleSuccessLogout();
+          })
+          .catch(error => {
+            console.error('Error occurred during sign out:', error);
+            this.handleSuccessLogout();
+          });
+      } else {
+        this.handleSuccessLogout();
+      }
+    });
   }
 
   isLoggedIn(): boolean {

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  SocialLoginModule,
   GoogleLoginProvider,
   SocialAuthServiceConfig,
   GoogleSigninButtonModule,
@@ -21,7 +20,6 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     RouterModule,
     GoogleSigninButtonModule,
-    SocialLoginModule,
     HttpClientModule,
   ],
   providers: [

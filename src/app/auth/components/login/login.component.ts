@@ -45,7 +45,19 @@ export class LoginComponent implements OnInit {
       this.user = user;
       this.loggedIn = user != null;
       if (this.loggedIn) {
-        this.userService.setLoggedIn(this.user);
+        this.userService.setLoggedIn({
+          email: user.email,
+          provider: '',
+          id: '',
+          name: '',
+          photoUrl: '',
+          firstName: '',
+          lastName: '',
+          authToken: '',
+          idToken: '',
+          authorizationCode: '',
+          response: '',
+        });
         this.router.navigate(['/posts']).then(r => r);
       }
     });
