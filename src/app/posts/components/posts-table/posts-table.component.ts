@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { HttpClient } from '@angular/common/http';
+import { PostsService } from '../../services/posts.service';
 
 export interface PeriodicElement {
   userId: number;
@@ -23,7 +23,7 @@ export class PostsTableComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['userId', 'id', 'title', 'body'];
   dataSource = new MatTableDataSource<PeriodicElement>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private postsService: PostsService) {}
 
   ngOnInit() {
     this.fetchData();
@@ -44,11 +44,8 @@ export class PostsTableComponent implements OnInit, AfterViewInit {
   }
 
   fetchData() {
-    this.http
-      .get<PeriodicElement[]>('https://jsonplaceholder.typicode.com/posts')
-      .subscribe(data => {
-        console.log('data', data);
-        this.dataSource.data = data;
-      });
+    this.postsService.fetchPosts().subscribe(data => {
+      this.dataSource.data = data;
+    });
   }
 }
