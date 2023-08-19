@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../../auth/user.service';
+import { UserService } from '../../../auth/services/user.service';
 import { SocialUser } from '@abacritt/angularx-social-login';
 
 @Component({

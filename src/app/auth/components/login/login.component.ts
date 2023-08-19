@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
-import { UserService } from '../../user.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
       if (this.loggedIn) {
         localStorage.setItem('email', user.email);
         this.userService.setUser(this.user);
+        this.userService.setLoggedIn();
         this.router.navigate(['/posts']).then(r => r);
       }
     });
@@ -57,6 +58,7 @@ export class LoginComponent implements OnInit {
     if (value) {
       localStorage.setItem('email', value.email);
       this.userService.setUser(this.user);
+      this.userService.setLoggedIn();
       this.router.navigate(['/posts']).then(r => r);
     }
   }

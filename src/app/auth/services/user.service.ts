@@ -14,4 +14,17 @@ export class UserService {
   getUser(): SocialUser | null {
     return this.user;
   }
+
+  setLoggedIn(): void {
+    localStorage.setItem('isLoggedIn', 'true');
+  }
+
+  setLoggedOut(): void {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('email');
+  }
+
+  isLoggedIn(): boolean {
+    return localStorage.getItem('isLoggedIn') === 'true';
+  }
 }
