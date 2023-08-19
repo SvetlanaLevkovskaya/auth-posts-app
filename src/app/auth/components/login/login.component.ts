@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
         Validators.pattern('[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,5}$'),
       ],
     ],
-    password: ['', [Validators.required, Validators.minLength(3)]],
+    password: ['', [Validators.required, Validators.minLength(8)]],
     rememberMe: [false],
   });
 
@@ -45,9 +45,7 @@ export class LoginComponent implements OnInit {
       this.user = user;
       this.loggedIn = user != null;
       if (this.loggedIn) {
-        localStorage.setItem('email', user.email);
-        this.userService.setUser(this.user);
-        this.userService.setLoggedIn();
+        this.userService.setLoggedIn(this.user);
         this.router.navigate(['/posts']).then(r => r);
       }
     });
@@ -56,9 +54,19 @@ export class LoginComponent implements OnInit {
   onLoginSubmit() {
     const value = this.loginForm.value;
     if (value) {
-      localStorage.setItem('email', value.email);
-      this.userService.setUser(this.user);
-      this.userService.setLoggedIn();
+      this.userService.setLoggedIn({
+        email: value.email,
+        provider: '',
+        id: '',
+        name: '',
+        photoUrl: '',
+        firstName: '',
+        lastName: '',
+        authToken: '',
+        idToken: '',
+        authorizationCode: '',
+        response: '',
+      });
       this.router.navigate(['/posts']).then(r => r);
     }
   }
