@@ -1,5 +1,6 @@
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,11 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'not-found', component: PageNotFoundComponent },
+  {
+    path: '**',
+    redirectTo: '/not-found',
+  },
 ];
 
 @NgModule({
