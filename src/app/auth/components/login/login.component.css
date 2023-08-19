@@ -1,0 +1,100 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.box {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field {
+  margin-bottom: 15px;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.error {
+  color: #ff0000;
+  font-size: 12px;
+}
+
+button {
+  width: 100%;
+  padding: 14px 16px;
+  margin-top: 15px;
+  font-size: 16px;
+  background-color: #567b95;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover,
+.google-signin-button:hover {
+  background-color: #274665;
+}
+
+.google-signin-button {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  padding: 14px 16px;
+  background-color: #567b95;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.google-signin-button::after {
+  content: "Sign in with Google";
+  position: absolute;
+  top: 50%;
+  left: 47%;
+  transform: translate(-40%, -50%);
+}
+
+button,
+.google-signin-button:active {
+  background-color: #274665;
+}
+
+button,
+.google-signin-button:focus {
+  outline: none;
+}
+
+
