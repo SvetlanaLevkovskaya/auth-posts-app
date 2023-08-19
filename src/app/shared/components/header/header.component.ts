@@ -9,8 +9,8 @@ import { UserService } from '../../../auth/services/user.service';
 export class HeaderComponent {
   constructor(private userService: UserService) {}
 
-  get userEmail(): string | undefined {
-    return this.userService.getUser()?.email;
+  get userEmail(): string | null {
+    return localStorage.getItem('email');
   }
 
   logout(): void {
