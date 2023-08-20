@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       if (this.loggedIn) {
         this.userService.setLoggedIn({
           email: user.email,
-          provider: '',
+          provider: user.provider,
           id: '',
           name: '',
           photoUrl: '',
