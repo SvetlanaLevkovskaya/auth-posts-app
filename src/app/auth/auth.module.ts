@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   GoogleLoginProvider,
-  SocialAuthServiceConfig,
   GoogleSigninButtonModule,
+  SocialAuthServiceConfig,
 } from '@abacritt/angularx-social-login';
 
 import { ReactiveFormsModule } from '@angular/forms';

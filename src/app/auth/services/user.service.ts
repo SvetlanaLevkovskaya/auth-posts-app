@@ -40,7 +40,6 @@ export class UserService {
           })
           .catch(error => {
             console.error('Error occurred during sign out:', error);
-            this.handleSuccessLogout();
           });
       } else {
         this.handleSuccessLogout();

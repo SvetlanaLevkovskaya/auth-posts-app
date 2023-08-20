@@ -8,6 +8,8 @@ import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
+import { UserService } from './auth/services/user.service';
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +23,7 @@ import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
     NgxSpinnerModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [NgxSpinnerService],
+  providers: [NgxSpinnerService, UserService, SocialAuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
