@@ -9,6 +9,7 @@ export const notAuthGuard = () => {
   const notificationService = inject(NotificationService);
   const isLoggedIn: boolean = userService.isLoggedIn();
   if (isLoggedIn) {
+    console.log('isLoggedIn', isLoggedIn);
     notificationService.handleSuccess('You`re already signed in!');
     router.navigate(['/posts']).then(r => r);
   }
