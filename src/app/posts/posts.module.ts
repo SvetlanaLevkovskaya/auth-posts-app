@@ -9,6 +9,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { PostComponent } from './components/post/post.component';
+import { PostsService } from './services/posts.service';
 
 @NgModule({
   declarations: [PostsTableComponent, PostComponent],
@@ -22,6 +23,6 @@ import { PostComponent } from './components/post/post.component';
     MatSortModule,
     MatPaginatorModule,
   ],
-  providers: [],
+  providers: [PostsService],
 })
 export class PostsModule {}

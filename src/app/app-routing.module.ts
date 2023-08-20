@@ -1,6 +1,7 @@
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { notAuthGuard } from './auth/guards/not-auth.guard';
 
 const routes: Routes = [
   {
@@ -11,7 +12,7 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./auth/auth.module').then(el => el.AuthModule),
-    //canActivate: [notAuthGuard],
+    canActivate: [notAuthGuard],
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'not-found', component: PageNotFoundComponent },
