@@ -83,18 +83,6 @@ button:hover,
   content: "Sign in with Google";
   position: absolute;
   top: 50%;
-  left: 47%;
+  left: 46%;
   transform: translate(-40%, -50%);
 }
-
-button,
-.google-signin-button:active {
-  background-color: #274665;
-}
-
-button,
-.google-signin-button:focus {
-  outline: none;
-}
-
-
