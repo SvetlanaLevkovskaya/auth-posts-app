@@ -5,7 +5,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { PostsService } from '../../services/posts.service';
 import { Post } from '../../interfaces/post.interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-posts-table',
@@ -22,21 +21,17 @@ export class PostsTableComponent implements OnInit, AfterViewInit {
   constructor(
     private postsService: PostsService,
     private router: Router,
-    private route: ActivatedRoute,
-    private spinner: NgxSpinnerService
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.spinner.show().then(r => console.log('postss-r', r));
     this.route.paramMap.subscribe(params => {
-      this.spinner.hide().then(r => console.log('postss-hide-r', r));
       const id = params.get('id');
       if (id) {
         this.postsService.fetchPostById(Number(id)).subscribe(post => {
           this.dataSource.data = [post];
         });
       } else {
-        this.spinner.hide();
         this.fetchData();
       }
     });

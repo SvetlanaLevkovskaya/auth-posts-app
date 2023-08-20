@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PostsRoutingModule } from './posts-routing.module';
@@ -10,7 +10,6 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { PostComponent } from './components/post/post.component';
 import { PostsService } from './services/posts.service';
-import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 
 @NgModule({
   declarations: [PostsTableComponent, PostComponent],
@@ -23,9 +22,7 @@ import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    NgxSpinnerModule,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [PostsService, NgxSpinnerService],
+  providers: [PostsService],
 })
 export class PostsModule {}
