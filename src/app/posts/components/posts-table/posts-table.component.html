@@ -9,7 +9,7 @@
     mat-table
     [dataSource]="dataSource"
     matSort
-    class="mat-elevation-z2"
+    class="mat-elevation-z8"
     aria-label="Posts Table">
     <ng-container matColumnDef="userId">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>UserID</th>
@@ -32,7 +32,10 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      [routerLink]="['/posts', row.id]"></tr>
   </table>
 
   <mat-paginator

@@ -1,0 +1,18 @@
+.post-details-container {
+  margin: 50px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+p {
+  font-weight: bold;
+}
+
+.post-details-container .date {
+  font-style: italic;
+  color: #888;
+}

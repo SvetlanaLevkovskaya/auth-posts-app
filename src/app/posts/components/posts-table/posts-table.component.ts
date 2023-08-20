@@ -3,13 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { PostsService } from '../../services/posts.service';
-
-export interface PeriodicElement {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
+import { Post } from '../../interfaces/post.interfaces';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-posts-table',
@@ -21,12 +16,26 @@ export class PostsTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   displayedColumns: string[] = ['userId', 'id', 'title', 'body'];
-  dataSource = new MatTableDataSource<PeriodicElement>();
+  dataSource = new MatTableDataSource<Post>();
 
-  constructor(private postsService: PostsService) {}
+  constructor(
+    private postsService: PostsService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.fetchData();
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      if (id) {
+        this.postsService.fetchPostById(Number(id)).subscribe(post => {
+          console.log('post', post);
+          this.dataSource.data = [post];
+        });
+      } else {
+        this.fetchData();
+      }
+    });
   }
 
   ngAfterViewInit() {
