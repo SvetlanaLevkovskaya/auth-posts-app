@@ -7,33 +7,28 @@ import { Notify } from '../interfaces/notify.interfaces';
 })
 export class NotificationService {
   notify$ = new BehaviorSubject<Notify | null>(null);
+  private readonly notificationTimeout = 3000;
 
-  handleError(message: string) {
-    console.log('Error notification:', message);
-    this.notify$.next({ severity: 'error', message });
+  private addNotification(severity: 'success' | 'error', message: string) {
+    this.notify$.next({ severity, message });
 
     setTimeout(() => {
       const currentNotification = this.notify$.getValue();
       if (currentNotification?.message === message) {
         this.clear();
       }
-    }, 3000);
+    }, this.notificationTimeout);
+  }
+
+  handleError(message: string) {
+    this.addNotification('error', message);
   }
 
   handleSuccess(message: string) {
-    console.log('Success notification:', message);
-    this.notify$.next({ severity: 'success', message });
-
-    setTimeout(() => {
-      const currentNotification = this.notify$.getValue();
-      if (currentNotification?.message === message) {
-        this.clear();
-      }
-    }, 3000);
+    this.addNotification('success', message);
   }
 
   clear() {
-    console.log('Clearing notifications');
     this.notify$.next(null);
   }
 }
