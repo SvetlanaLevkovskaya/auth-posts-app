@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { environment } from '../../environments/environments';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -30,9 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              '972926948361-trfec5iqntee7b9id9c728v8ccbml8ie.apps.googleusercontent.com'
-            ),
+            provider: new GoogleLoginProvider(environment.google_client_id),
           },
         ],
         onError: err => {
