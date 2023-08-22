@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { PostsService } from '../../services/posts.service';
 import { Post } from '../../interfaces/post.interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-posts-table',
@@ -25,11 +26,11 @@ export class PostsTableComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.pipe(take(1)).subscribe(params => {
       const id = params.get('id');
       if (id) {
         this.postsService.fetchPostById(Number(id)).subscribe(post => {
-          this.dataSource.data = [post];
+          this.setDataSource([post]);
         });
       } else {
         this.fetchData();
@@ -53,7 +54,11 @@ export class PostsTableComponent implements OnInit, AfterViewInit {
 
   fetchData() {
     this.postsService.fetchPosts().subscribe(data => {
-      this.dataSource.data = data;
+      this.setDataSource(data);
     });
+  }
+
+  private setDataSource(data: Post[]) {
+    this.dataSource.data = data;
   }
 }

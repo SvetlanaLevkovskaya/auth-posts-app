@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from '../../interfaces/post.interfaces';
 import { ActivatedRoute } from '@angular/router';
 import { PostsService } from '../../services/posts.service';
+import { Observable, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-post',
@@ -9,7 +10,7 @@ import { PostsService } from '../../services/posts.service';
   styleUrls: ['./post.component.css'],
 })
 export class PostComponent implements OnInit {
-  post: Post | undefined;
+  post$!: Observable<Post | undefined>;
 
   constructor(
     private route: ActivatedRoute,
@@ -17,17 +18,8 @@ export class PostComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      const postId = params['id'];
-      this.postsService.fetchPostById(postId).subscribe({
-        next: post => {
-          console.log('Fetched post:', post);
-          this.post = post;
-        },
-        error: error => {
-          console.error('Error fetching post:', error);
-        },
-      });
-    });
+    this.post$ = this.route.params.pipe(
+      switchMap(params => this.postsService.fetchPostById(params['id']))
+    );
   }
 }

@@ -7,7 +7,7 @@ import { Post } from '../interfaces/post.interfaces';
   providedIn: 'root',
 })
 export class PostsService {
-  private apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+  private readonly apiUrl = 'https://jsonplaceholder.typicode.com/posts';
 
   constructor(private http: HttpClient) {}
 
@@ -16,7 +16,7 @@ export class PostsService {
   }
 
   fetchPostById(id: number): Observable<Post> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.get<Post>(url);
+    const postUrl = `${this.apiUrl}/${id}`;
+    return this.http.get<Post>(postUrl);
   }
 }
