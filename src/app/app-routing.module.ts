@@ -7,11 +7,12 @@ const routes: Routes = [
   {
     path: 'posts',
     loadChildren: () =>
-      import('./posts/posts.module').then(el => el.PostsModule),
+      import('./posts/posts.module').then(module => module.PostsModule),
   },
   {
     path: 'login',
-    loadChildren: () => import('./auth/auth.module').then(el => el.AuthModule),
+    loadChildren: () =>
+      import('./auth/auth.module').then(module => module.AuthModule),
     canActivate: [notAuthGuard],
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },

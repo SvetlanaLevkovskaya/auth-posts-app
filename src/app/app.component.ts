@@ -9,11 +9,18 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class AppComponent implements OnInit {
   constructor(private spinner: NgxSpinnerService) {}
 
-  ngOnInit(): void {
-    this.spinner.show().then(r => console.log('app-r', r));
+  async ngOnInit(): Promise<void> {
+    await this.showSpinner();
+    await this.hideSpinnerAfterDelay(3000);
+  }
 
-    setTimeout(() => {
-      this.spinner.hide().then(r => console.log('app-hide-r', r));
-    }, 3000);
+  private async showSpinner(): Promise<void> {
+    await this.spinner.show();
+  }
+
+  private async hideSpinnerAfterDelay(delay: number): Promise<void> {
+    setTimeout(async () => {
+      await this.spinner.hide();
+    }, delay);
   }
 }
