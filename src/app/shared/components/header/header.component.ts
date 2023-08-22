@@ -13,6 +13,15 @@ export class HeaderComponent {
     return localStorage.getItem('email');
   }
 
+  isLoggedIn(): boolean {
+    return !!this.userEmail;
+  }
+
+  getUsernameDisplay(): string {
+    const userEmail = this.userEmail;
+    return userEmail ? `Welcome, ${userEmail}!` : '';
+  }
+
   logout(): void {
     this.userService.setLoggedOut();
   }
