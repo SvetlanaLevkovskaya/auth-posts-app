@@ -53,10 +53,18 @@
       </div>
 
       <div class="form-field">
-        <button type="submit" [disabled]="loginForm.invalid">Sign in</button>
+        <button class="button" type="submit" [disabled]="loginForm.invalid">
+          Sign in
+        </button>
       </div>
     </form>
     <asl-google-signin-button
-      class="google-signin-button"></asl-google-signin-button>
+      type="standard"
+      size="large"
+      text="signin_with"
+      shape="rectangular"
+      theme="outline"
+      logo_alignment="left"
+      width="300px"></asl-google-signin-button>
   </div>
 </div>
