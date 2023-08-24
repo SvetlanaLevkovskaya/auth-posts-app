@@ -42,4 +42,4 @@ AuthPostApp relies on the following key dependencies:
 - Angular - the core framework for web application development.
 - Angular Material - a set of ready-to-use components and styles for Angular.
 - RxJS - a library for handling asynchronous operations in Angular.
- -ngx-spinner - a library for displaying loading spinners.
+- ngx-spinner - a library for displaying loading spinners.
