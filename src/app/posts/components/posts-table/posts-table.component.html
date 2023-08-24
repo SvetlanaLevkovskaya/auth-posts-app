@@ -23,7 +23,8 @@
       mat-row
       *matRowDef="let row; columns: displayedColumns"
       [routerLink]="['/posts', row.id]"
-      aria-label="View post details"></tr>
+      aria-label="View post details"
+      style="cursor: pointer"></tr>
   </table>
 
   <mat-paginator
