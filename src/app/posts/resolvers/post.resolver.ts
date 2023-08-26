@@ -16,11 +16,11 @@ export const postResolver: ResolveFn<
     if (post) {
       return post;
     } else {
-      await router.navigate(['/not-found']).then(r => r);
+      await router.navigate(['/not-found']);
       return undefined;
     }
   } catch (error) {
-    await router.navigate(['/not-found']).then(r => r);
+    await router.navigate(['/not-found']);
     return undefined;
   }
 };
